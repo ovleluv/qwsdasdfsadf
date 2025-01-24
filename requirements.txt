@@ -6,7 +6,7 @@ aiormq==3.3.1
 aiosignal==1.2.0
 alabaster==0.7.12
 amqp==5.1.1
-anaconda-client==1.9.0
+anaconda-client==1.2.2
 anaconda-navigator==2.1.4
 anaconda-project==0.10.2
 annotated-types==0.7.0
