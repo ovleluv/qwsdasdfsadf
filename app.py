@@ -10,7 +10,7 @@ from docx import Document
 app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
 
-os.environ["OPENAI_API_KEY"] = "sk-TiNSExMJ6UnI4dHEB7EBMUol2XnrRGHVL-D9iAMU87T3BlbkFJPqCaU5KoF6GdtDOPLqmS7yESy1Wea_jVvG7whDXIEA"
+os.environ["OPENAI_API_KEY"] = "sk-CMhhLrYgf4nVMsfzAihPbphGlmrtRKmxzCPulvl6ybT3BlbkFJ-JfCeYdHFB10lqiloFG2iHhBZ6cYY3Knhhsa6VIgsA"
 
 contract_types = {
     "1": "부동산임대차계약서",
