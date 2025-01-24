@@ -7,11 +7,14 @@ import re
 import json
 from docx import Document
 
-app = Flask(__name__, static_folder='static', template_folder='templates')
-CORS(app)
+# 환경 변수에서 API 키 로드
+api_key = os.environ.get("OPENAI_API_KEY")
 
-os.environ["OPENAI_API_KEY"] = "sk-CMhhLrYgf4nVMsfzAihPbphGlmrtRKmxzCPulvl6ybT3BlbkFJ-JfCeYdHFB10lqiloFG2iHhBZ6cYY3Knhhsa6VIgsA"
+# API 키가 설정되지 않았을 경우 에러 처리
+if not api_key:
+    raise ValueError("OpenAI API 키가 설정되지 않았습니다. 환경 변수를 확인하세요.")
 
+openai.api_key = api_key
 contract_types = {
     "1": "부동산임대차계약서",
     "2": "위임장",
