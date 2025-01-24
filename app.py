@@ -5,20 +5,12 @@ import os
 import openai
 import re
 import json
-from dotenv import load_dotenv
 from docx import Document
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
 
-load_dotenv()
-
-openai_api_key = os.getenv("OPENAI_API_KEY")
-
-if not openai_api_key:
-    raise EnvironmentError("OPENAI_API_KEY 환경 변수가 설정되지 않았습니다.")
-
-openai.api_key = openai_api_key
+os.environ["OPENAI_API_KEY"] = "sk-TiNSExMJ6UnI4dHEB7EBMUol2XnrRGHVL-D9iAMU87T3BlbkFJPqCaU5KoF6GdtDOPLqmS7yESy1Wea_jVvG7whDXIEA"
 
 contract_types = {
     "1": "부동산임대차계약서",
