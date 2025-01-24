@@ -54,7 +54,7 @@ def generate_contract():
     template_prompt = f"'{contract_type}'의 표준 계약서를 작성해 주세요."
 
     try:
-        template_response = openai.ChatCompletion.create(
+        template_response = openai.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
@@ -81,7 +81,7 @@ def generate_contract():
             3. 계약서의 전체적인 형식과 구조는 유지해주세요.
             """
 
-            update_response = openai.ChatCompletion.create(
+            update_response = openai.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": "You are a helpful assistant."},
