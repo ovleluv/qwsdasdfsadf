@@ -240,3 +240,7 @@ def download_contract():
         return send_from_directory('completed_contracts', 'completed_contract.docx', as_attachment=True)
     else:
         return jsonify({"error": "다운로드할 파일이 없습니다."})
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
