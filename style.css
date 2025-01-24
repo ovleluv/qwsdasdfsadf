@@ -1,0 +1,122 @@
+/* 기존 스타일 유지 */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Noto Sans KR', Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* 챗봇 컨테이너 */
+.container {
+    width: 800px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 채팅 박스 */
+#chat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* 메시지 간격을 최소화 */
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px; /* 전체 컨테이너 간격 조정 */
+    border-radius: 5px;
+    text-align: left;
+}
+
+/* 챗봇 메시지 스타일 */
+.bot-message {
+    align-self: flex-start;
+    background-color: #e3f2fd;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    max-width: 75%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 15px;
+    line-height: 1.6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    clear: both;
+}
+
+/* 사용자 메시지 스타일 */
+.user-message {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    max-width: 75%;
+    background-color: #bbdefb;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 15px;
+    line-height: 1.6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    align-self: flex-end;
+    float: right;
+    clear: both;
+}
+
+/* 메시지 간격 추가 조정 */
+.user-message + .bot-message {
+    margin-top: 1px;
+}
+
+/* 리스트 스타일 개선 */
+.bot-message ul {
+    padding-left: 20px; /* 리스트 들여쓰기 조정 */
+    margin: 10px 0;
+}
+
+.bot-message ul li {
+    list-style-type: disc;
+    margin-bottom: 3px;
+}
+
+/* 버튼 스타일 유지 */
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 입력 필드 스타일 */
+#text-input {
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* 메시지 전송 버튼 스타일 */
+#send-btn {
+    padding: 12px 24px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background-color: #0056b3;
+}
