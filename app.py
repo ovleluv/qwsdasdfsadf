@@ -196,14 +196,22 @@ def extract_fields():
             temperature=0.7
         )
         extracted_data = response.choices[0].message.content.strip()
-        json_match = re.search(r'\{.*\}', extracted_data, re.DOTALL)
+        # json_match = re.search(r'\{.*\}', extracted_data, re.DOTALL)
 
-        if json_match:
-            json_data = json.loads(json_match.group())
-            return jsonify({"extracted_fields": json_data})
-        else:
-            return jsonify({"error": "JSON 데이터를 추출하지 못했습니다."})
+        # if json_match:
+           # json_data = json.loads(json_match.group())
+           # return jsonify({"extracted_fields": json_data})
+        # else:
+            # return jsonify({"error": "JSON 데이터를 추출하지 못했습니다."})
 
+        try:
+            json_data = json.loads(extracted_data)  # JSON 변환
+            return jsonify({"extracted_fields": json_data})  # ✅ 올바르게 JSON 응답
+
+        except json.JSONDecodeError:
+            print("⚠️ JSON 파싱 실패. 응답이 JSON이 아닐 가능성 있음.")
+            return jsonify({"error": "AI 응답이 JSON 형식이 아닙니다.", "raw_response": extracted_data})
+    
     except Exception as e:
         return jsonify({"error": str(e)})
 
