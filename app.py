@@ -15,8 +15,7 @@ api_key = os.environ.get("OPENAI_API_KEY")
 # API 키가 설정되지 않았을 경우 에러 처리
 if not api_key:
     raise ValueError("OpenAI API 키가 설정되지 않았습니다. 환경 변수를 확인하세요.")
-
-openai.api_key = api_key
+else: openai.api_key = api_key
 
 contract_types = {
     "1": "부동산임대차계약서",
@@ -66,7 +65,7 @@ def generate_contract():
             max_tokens=1000,
             temperature=0.7
         )
-        contract_template = template_response.choices[0].message['content'].strip()
+        contract_template = template_response.choices[0].message.content.strip()
 
         if extracted_fields:
             update_prompt = f"""
@@ -93,7 +92,7 @@ def generate_contract():
                 max_tokens=1500,
                 temperature=0.7
             )
-            updated_contract = update_response.choices[0].message['content'].strip()
+            updated_contract = update_response.choices[0].message.content.strip()
             return jsonify({"contract": updated_contract})
 
         return jsonify({"contract": contract_template})
@@ -130,8 +129,8 @@ def update_contract():
             max_tokens=1500,
             temperature=0.7
         )
-        updated_contract = response.choices[0].message['content'].strip()
-
+        updated_contract = response.choices[0].message.content.strip()
+        
         # Word 파일 생성
         doc = Document()
         doc.add_paragraph(updated_contract)
