@@ -149,34 +149,26 @@ function extractContractFields(userInput) {
         if (data.extracted_fields) {
             let extracted;
             try {
-                extracted = JSON.parse(data.extracted_fields);
-
+                # extracted = JSON.parse(data.extracted_fields);
+                
                 // 추출된 필드 데이터 저장
-                localStorage.setItem('extracted_fields', JSON.stringify(extracted));
+                localStorage.setItem('extracted_fields', JSON.stringify(data.extracted_fields));
 
                 let resultMessage = "다음과 같은 항목이 추출되었습니다:\n\n";
-                for (const [key, value] of Object.entries(extracted)) {
-                    if (typeof value === 'object') {
-                        resultMessage += `- ${key}: ${JSON.stringify(value)}\n`;
-                    } else {
-                        resultMessage += `- ${key}: ${value}\n`;
-                    }
+                for (const [key, value] of Object.entries(data.extracted_fields)) {
+                    resultMessage += `- ${key}: ${value}\n`;
                 }
                 appendMessage(resultMessage, 'bot');
 
                 // 추출된 데이터로 계약서 업데이트
                 updateContract(extracted);
-            } catch (error) {
-                console.error("[ERROR] JSON 파싱 실패:", error);
-                appendMessage("응답 데이터 파싱에 실패했습니다.", 'bot');
-            }
         } else if (data.error) {
             appendMessage("서버 오류: " + data.error, 'bot');
         } else {
             appendMessage("항목 추출에 실패했습니다. 다시 시도해 주세요.", 'bot');
         }
     })
-    .catch((error) => {
+    .catch(error => {
         console.error("[ERROR] 요청 실패:", error);
         appendMessage("서버 오류가 발생했습니다. 다시 시도해 주세요.", 'bot');
     });
