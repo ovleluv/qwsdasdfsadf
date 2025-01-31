@@ -163,7 +163,7 @@ def get_input_fields():
             max_tokens=500,
             temperature=0.7
         )
-        fields_text = response.choices[0].message['content'].strip()
+        fields_text = response.choices[0].message.content.strip()
         fields = fields_text.split('\n')
 
         request_message = f"'{contract_type}'을 작성하기 위해 다음 항목을 입력해 주세요:\n\n"
@@ -195,7 +195,7 @@ def extract_fields():
             max_tokens=500,
             temperature=0.7
         )
-        extracted_data = response.choices[0].message['content'].strip()
+        extracted_data = response.choices[0].message.content.strip()
         json_match = re.search(r'\{.*\}', extracted_data, re.DOTALL)
 
         if json_match:
